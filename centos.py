@@ -54,7 +54,7 @@ else:
     print "Error. There are not 2 interfaces in /etc/sysconfig/network-scripts/"
     exit()
 
-os.system("systemctl restart networking")
+os.system("systemctl restart network")
 os.system("iptables -t nat -F")
 os.system("iptables -t nat -X")
 os.system("iptables -t nat -A PREROUTING -d 10.10." + teamNum + ".0/24 -j NETMAP --to 192.168.22.0/24")
