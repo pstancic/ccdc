@@ -10,7 +10,7 @@ if (len(sys.argv) < 2 or os.getuid() != 0):
     """
     exit()
 
-os.system("yum install libssh tcpdump wget curl htop iptables iptables-service net-tools bind-utils nano lsof -y")
+os.system("yum install libssh tcpdump wget curl htop iptables iptables-services net-tools bind-utils nano lsof -y")
 
 os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
 os.system("sysctl -w net.ipv4.ip_forward=1")
