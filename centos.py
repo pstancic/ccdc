@@ -26,9 +26,9 @@ interfaces = glob.glob(base_dir + 'ifcfg-e*')
 teamNum = str(sys.argv[1])
 
 ip = list()
-ip[0] = "10.42.1" + teamNum + ".2"
-ip[1] = "10.52.1" + teamNum + ".1"
-ip[2] = "192.168.220.1"
+ip.append("10.42.1" + teamNum + ".2")
+ip.append("10.52.1" + teamNum + ".1")
+ip.append("192.168.220.1")
 
 if (len(interfaces) == 2):
     for i in range(len(interfaces)):
