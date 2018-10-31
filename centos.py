@@ -26,8 +26,8 @@ interfaces = glob.glob(base_dir + 'ifcfg-e*')
 teamNum = str(sys.argv[1])
 
 ip = list()
-ip[0] = "10.47.1" + teamNum + ".2"
-ip[1] = "10.57.1" + teamNum + ".1"
+ip[0] = "10.42.1" + teamNum + ".2"
+ip[1] = "10.52.1" + teamNum + ".1"
 ip[2] = "192.168.220.1"
 
 if (len(interfaces) == 2):
@@ -78,6 +78,6 @@ else:
 os.system("systemctl restart network")
 os.system("iptables -t nat -F")
 os.system("iptables -t nat -X")
-os.system("iptables -t nat -A PREROUTING -d 10.10." + teamNum + ".0/24 -j NETMAP --to 192.168.22.0/24")
-os.system("iptables -t nat -A POSTROUTING -s 192.168.22.0/24 -j NETMAP --to 10.10." + teamNum + ".0/24")
+os.system("iptables -t nat -A PREROUTING -d 10.52.1" + teamNum + ".0/24 -j NETMAP --to 192.168.220.0/24")
+os.system("iptables -t nat -A POSTROUTING -s 192.168.220.0/24 -j NETMAP --to 10.52.1" + teamNum + ".0/24")
 os.system("iptables-save > /etc/iptables")
