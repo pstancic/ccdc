@@ -42,31 +42,15 @@ if (len(interfaces) == 2):
         device = re.search(r'DEVICE=(\S+)', string)
         UUID = re.search(r'UUID=(\S+)', string)
         if (i == 0):
-            config_string = """
-            TYPE=Ethernet
-            PROXY_METHOD=none
-            BOOTPROTO=static
-            DEFROUTE=yes
-            IPV4_FAILURE_FATAL=no
-            IPV6INIT=no
-            ONBOOT=yes
-            """
+            config_string = "TYPE=Ethernet\nPROXY_METHOD=none\nBOOTPROTO=static\nDEFROUTE=yes\nIPV4_FAILURE_FATAL=no\nIPV6INIT=no\nONBOOT=yes"
             config_string += "\nNAME=" + str(name.group(1)) + "\nDEVICE=" + str(device.group(1)) + "\nUUID=" + str(UUID.group(1))
             config_string += "\nIPADDR0=" + ip[i] + "\nPREFIX0=30"
             config_string += "\nGATEWAY=10.47.1" + teamNum + ".1"
             config_string += "\nIPADDR1=" + ip[i+1] + "\nPREFIX1=24"
+            config_string += "\nDNS1=192.168.220.3"
         else:
-            config_string = """
-            TYPE=Ethernet
-            PROXY_METHOD=none
-            BOOTPROTO=static
-            DEFROUTE=yes
-            IPV4_FAILURE_FATAL=no
-            IPV6INIT=no
-            ONBOOT=yes
-            NAME=
-            """
-            config_string += str(name.group(1)) + "\nDEVICE=" + str(device.group(1)) + "\nUUID=" + str(UUID.group(1))
+            config_string = "TYPE=Ethernet\nPROXY_METHOD=none\nBOOTPROTO=static\nDEFROUTE=yes\nIPV4_FAILURE_FATAL=no\nIPV6INIT=no\nONBOOT=yes"
+            config_string += "\nNAME=" + str(name.group(1)) + "\nDEVICE=" + str(device.group(1)) + "\nUUID=" + str(UUID.group(1))
             config_string += "\nIPADDR=" + ip[i+1] + "\nNETMASK=255.255.255.0"
         f = open(interfaces[i], 'w')
         f.write(config_string)
